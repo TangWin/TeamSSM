@@ -17,7 +17,7 @@ import java.util.List;
 public class SY_DeptController {
 
     @Autowired
-    private SY_DeptDao sy_deptDao ;
+    private SY_DeptDao sy_deptDao;
 
     @ResponseBody
     @RequestMapping(value = "getDeptAll")
