@@ -11,6 +11,7 @@ public interface SY_DeptDao {
      * User：TW
      * 2018/01/26
      * @return
+     *
      */
     public List<SY_Dept> getDeptAll();
 
