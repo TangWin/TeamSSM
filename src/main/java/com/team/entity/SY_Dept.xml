@@ -16,4 +16,5 @@
     <select id="getDeptById" parameterType="java.lang.Integer" resultType="SY_Dept" >
         SELECT * FROM sy_dept WHERE ID = #id ;
     </select>
+
 </mapper>
