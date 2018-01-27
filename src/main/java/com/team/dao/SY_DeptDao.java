@@ -14,4 +14,25 @@ public interface SY_DeptDao {
      */
     public List<SY_Dept> getDeptAll();
 
+
+    /**
+     * 增加单个部门
+     * User：TW
+     * 2018/01/27
+     * @param dept
+     * @return
+     */
+    public Integer addDept(SY_Dept dept);
+
+
+    /**
+     * 根据id得到单个部门对象
+     * User：TW
+     * 2018/01/27
+     * @param id
+     * @return
+     */
+    public SY_Dept getDeptById(Integer id);
+
+
 }
