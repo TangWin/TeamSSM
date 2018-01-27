@@ -8,4 +8,10 @@
     <select id="getDeptAll" resultType="com.team.entity.SY_Dept">
         select *  from SY_Dept ;
     </select>
+
+
+    <insert id="">
+        INSERT INTO sy_dept(DeptName, Remark, Disabled) VALUES(#);
+    </insert>
+
 </mapper>

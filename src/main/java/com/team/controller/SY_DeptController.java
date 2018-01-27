@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- *部门controller类
+ *  Dept     部门controller类
+ *  唐威
  */
 @Controller
 public class SY_DeptController {
