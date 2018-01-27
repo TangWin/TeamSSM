@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:comtext="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--加载文件-->
+    <comtext:property-placeholder location="classpath:db.properties"></comtext:property-placeholder>
+
+    <!--加载数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${uname}"></property>
+        <property name="password" value="${pwd}"></property>
+        <property name="driverClass" value="${driver_Class}"></property>
+        <property name="jdbcUrl" value="${url}"></property>
+        <property name="initialPoolSize" value="${initPoolSize}"></property>
+        <property name="maxPoolSize" value="${maxSize}"></property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:myBatis.xml"></property>
+        <property name="mapperLocations" value="classpath:com/team/entity/*.xml"></property>
+    </bean>
+
+    <!--配置后无需指定接口，自动扫描此包下所有接口-->
+    <bean id="scannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.team.dao"></property>
+    </bean>
+
+
+</beans>
