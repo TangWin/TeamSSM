@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.SY_EmpDao">
+
+    <resultMap id="myEmp" type="SY_Emp">
+        <id property="id" column="eid"/>
+        <result property="empName" column="EmpName"/>
+        <result property="empNo" column="EmpNo"/>
+        <result property="pwd" column="Pwd"/>
+        <result property="remark" column="Remark"/>
+        <result property="disabled" column="Disabled"/>
+        <association property="deptID"  javaType="com.team.entity.SY_Dept">
+            <id property="ID" column="did"/>
+            <result property="deptName" column="DeptName"/>
+            <result property="remark" column="dRemark"/>
+            <result property="disabled" column="dDisabled"/>
+        </association>
+    </resultMap>
+
+
+    <select id="login" parameterType="java.lang.String" resultMap="myEmp">
+        SELECT e.ID eid , e.EmpName, e.EmpNo, e.Pwd, e.DeptID, e.Remark, e.Disabled, d.ID did , d.DeptName, d.Remark dRemark, d.Disabled dDisabled FROM sy_emp e , sy_dept d
+        WHERE e.DeptID = d.ID
+        <if test="empNo !=null ">
+            AND  e.EmpNo = #{empNo}
+        </if>
+        <if test="pwd != null ">
+            and e.Pwd = #{pwd} ;
+        </if>
+    </select>
+</mapper>

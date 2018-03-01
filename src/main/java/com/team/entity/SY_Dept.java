@@ -20,6 +20,7 @@ public class SY_Dept implements Serializable{
     public SY_Dept() {
     }
 
+
     public SY_Dept(Integer ID, String deptName, String remark, Boolean disabled) {
         this.ID = ID;
         this.deptName = deptName;

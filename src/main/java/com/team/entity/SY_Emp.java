@@ -13,23 +13,45 @@ public class SY_Emp implements Serializable {
     private String empName ;
     private String empNo ;
     private String pwd ;
-    private Integer deptId ;
     private String remark ;
     private Boolean disabled ;
+    private SY_Dept deptID ;
 
     public SY_Emp() {
     }
 
-    public SY_Emp(Integer id, String empName, String empNo, String pwd, Integer deptId, String remark, Boolean disabled) {
+    public SY_Emp(Integer id, String empName, String empNo, String pwd, SY_Dept deptID, String remark, Boolean disabled) {
         this.id = id;
         this.empName = empName;
         this.empNo = empNo;
         this.pwd = pwd;
-        this.deptId = deptId;
+        this.deptID = deptID;
         this.remark = remark;
         this.disabled = disabled;
     }
 
+
+    public SY_Emp(String empName, String empNo, String pwd, SY_Dept deptID, String remark, Boolean disabled) {
+        this.empName = empName;
+        this.empNo = empNo;
+        this.pwd = pwd;
+        this.deptID = deptID;
+        this.remark = remark;
+        this.disabled = disabled;
+    }
+
+    @Override
+    public String toString() {
+        return "SY_Emp{" +
+                "id=" + id +
+                ", empName='" + empName + '\'' +
+                ", empNo='" + empNo + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", deptID=" + deptID +
+                ", remark='" + remark + '\'' +
+                ", disabled=" + disabled +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -63,12 +85,13 @@ public class SY_Emp implements Serializable {
         this.pwd = pwd;
     }
 
-    public Integer getDeptId() {
-        return deptId;
+
+    public SY_Dept getDeptID() {
+        return deptID;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setDeptID(SY_Dept deptID) {
+        this.deptID = deptID;
     }
 
     public String getRemark() {

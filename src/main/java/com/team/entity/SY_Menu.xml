@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.SY_MenuDao">
+
+
+    <select id="getMenuAllByEmpId" parameterType="java.lang.Integer" resultType="SY_Menu">
+        SELECT m.* FROM SY_Menu m
+        <if test="EmpId != null ">
+            , SY_EmpMenuPower  WHERE m.id = SY_EmpMenuPower.MenuID  AND empId = #{EmpId}
+        </if>
+         ORDER BY m.parent , m.orderIndex
+    </select>
+
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->
+	<bean id="lifecycleBeanPostProcessor"
+		  class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+
+	<!-- 配置SecurityManager -->
+	<bean id="webSecurityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealms"></property>
+	</bean>
+
+	<!-- 自定义realm -->
+	<bean id="myRealms" class="com.team.shiro.MyRealm">
+	</bean>
+
+
+
+	<!-- 配置在web项目中起作用的shiroFilter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<!-- 引用securityManager -->
+		<property name="securityManager" ref="webSecurityManager"></property>
+		<!-- 配置没有认证的时候进入的界面 -->
+		<property name="loginUrl" value="/login.jsp"></property>
+		<!-- 配置要过滤的界面以及相对应的权限 -->
+		<property name="filterChainDefinitions">
+			<!-- 配值的时候，不能有空格 -->
+			<value>
+				/login.jsp*=anon
+				/workspace.jsp*=authc
+
+				<!-- 配置角色可访问的界面
+				/index.jsp*=roles[admin]
+				/success.jsp*=roles[user] -->
+			</value>
+		</property>
+	</bean>
+
+
+</beans>
