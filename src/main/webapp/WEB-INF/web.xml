@@ -5,19 +5,13 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-  
+
 
   <!--加载Spring以及Shiro配置文件 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext-*.xml</param-value>
   </context-param>
-
-  <listener>
-
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-
-  </listener>
 
 <!--Shiro的配置-->
   <filter>
@@ -29,10 +23,34 @@
     </init-param>
   </filter>
 
+  <!--自定义权限过滤器，用于防止通过地址栏等方式非法访问-->
+  <filter>
+    <filter-name>realmFilter</filter-name>
+    <filter-class>com.team.filter.RealmFilter</filter-class>
+  </filter>
+
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
+
+  <filter-mapping>
+    <filter-name>realmFilter</filter-name>
+    <url-pattern>*.action</url-pattern>
+  </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>realmFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+
+  <listener>
+
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+
+  </listener>
 
   <servlet>
     <servlet-name>springMVC</servlet-name>

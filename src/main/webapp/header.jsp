@@ -11,6 +11,23 @@
 <html>
 <head>
     <title>header</title>
+
+    <link rel="stylesheet" href="/assets/css/reset.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/text.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/form.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/buttons.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/grid.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/layout.css" type="text/css" media="screen" title="no title" />
+
+    <link rel="stylesheet" href="/assets/css/ui-darkness/jquery-ui-1.8.12.custom.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/plugin/jquery.visualize.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/plugin/facebox.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/plugin/uniform.default.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="/assets/css/plugin/dataTables.css" type="text/css" media="screen" title="no title" />
+
+    <link rel="stylesheet" href="/assets/css/custom.css" type="text/css" media="screen" title="no title">
+
+
 </head>
 <body>
 
@@ -103,9 +120,11 @@
 
                 <div class="nav_menu">
                     <ul>
-                        <li><a href="workspace.jsp">我的工作台</a></li>
-                        <li><a href="./page/sys_pwd.html">修改密码</a></li>
-                        <li><a href="/logout.action">退出系统</a></li>
+                        <c:forEach var="menu" items="${allMenu}">
+                            <c:if test="${menu.parent==6}">
+                                <li><a href="${menu.url}">${menu.menuName}</a></li>
+                            </c:if>
+                        </c:forEach>
                     </ul>
                 </div> <!-- .menu -->
             </li>
@@ -116,9 +135,26 @@
 
 <div id="masthead">
     <div>
-        <span id="pagetitle"><a href="javascript:;">我的工作台</a></span>
         <span id="welcome_span">欢迎回来，${currentEmp.empName}</span>
     </div>
 </div> <!-- #masthead -->
+
+
+<script src="/assets/js/vue.min.js" type="text/javascript"></script>
+
+<script src="/assets/js/jquery/jquery-1.5.2.min.js"></script>
+<script src="/assets/js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
+<script src="/assets/js/misc/excanvas.min.js"></script>
+<script src="/assets/js/jquery/facebox.js"></script>
+<script src="/assets/js/jquery/jquery.visualize.js"></script>
+<script src="/assets/js/jquery/jquery.dataTables.min.js"></script>
+<script src="/assets/js/jquery/jquery.tablesorter.min.js"></script>
+<script src="/assets/js/jquery/jquery.uniform.min.js"></script>
+<script src="/assets/js/jquery/jquery.placeholder.min.js"></script>
+
+<script src="/assets/js/widgets.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+
+
 </body>
 </html>

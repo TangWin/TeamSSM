@@ -18,6 +18,19 @@ public class SY_Menu implements Serializable {
     private Boolean disabled ;
 
 
+    @Override
+    public String toString() {
+        return "SY_Menu{" +
+                "id=" + id +
+                ", menuName='" + menuName + '\'' +
+                ", parent=" + parent +
+                ", url='" + url + '\'' +
+                ", orderIndex=" + orderIndex +
+                ", flowID=" + flowID +
+                ", disabled=" + disabled +
+                '}';
+    }
+
     public SY_Menu() {
     }
 

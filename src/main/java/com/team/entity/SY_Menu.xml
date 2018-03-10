@@ -7,10 +7,15 @@
 
     <select id="getMenuAllByEmpId" parameterType="java.lang.Integer" resultType="SY_Menu">
         SELECT m.* FROM SY_Menu m
-        <if test="EmpId != null ">
-            , SY_EmpMenuPower  WHERE m.id = SY_EmpMenuPower.MenuID  AND empId = #{EmpId}
+        <if test="EmpId != null">
+            , SY_EmpMenuPower
         </if>
-         ORDER BY m.parent , m.orderIndex
+        WHERE m.disabled = 0
+        <if test="EmpId != null ">
+              and m.id = SY_EmpMenuPower.MenuID AND empId = #{EmpId}
+        </if>
+        ORDER BY m.parent , m.orderIndex
+
     </select>
 
 </mapper>

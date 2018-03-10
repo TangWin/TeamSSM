@@ -6,7 +6,7 @@
 
 
     <select id="getDeptAll" resultType="com.team.entity.SY_Dept">
-        select *  from SY_Dept ;
+        select *  from SY_Dept WHERE Disabled = 0 ;
     </select>
 
     <insert id="addDept" parameterType="SY_Dept">
