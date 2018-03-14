@@ -34,7 +34,7 @@
 <div id="header">
 
     <div class="content_pad">
-        <h1><a href="./workspace.html">湖南省自来水公司营销管理信息系统</a></h1>
+        <h1><a href="/workspace.jsp">湖南省自来水公司营销管理信息系统</a></h1>
 
         <ul id="nav">
 
@@ -44,7 +44,7 @@
 
                 <div class="nav_menu">
                     <ul>
-                        <c:forEach var="menu" items="${allMenu}">
+                        <c:forEach var="menu" items="${MyAllMenu}">
                             <c:if test="${menu.parent==1}">
                                 <li><a href="${menu.url}">${menu.menuName}</a></li>
                             </c:if>
@@ -58,7 +58,7 @@
 
                 <div class="nav_menu">
                     <ul>
-                        <c:forEach var="menu" items="${allMenu}">
+                        <c:forEach var="menu" items="${MyAllMenu}">
                             <c:if test="${menu.parent==2}">
                                 <li><a href="${menu.url}">${menu.menuName}</a></li>
                             </c:if>
@@ -73,7 +73,7 @@
 
                 <div class="nav_menu">
                     <ul>
-                        <c:forEach var="menu" items="${allMenu}">
+                        <c:forEach var="menu" items="${MyAllMenu}">
                             <c:if test="${menu.parent==3}">
                                 <li><a href="${menu.url}">${menu.menuName}</a></li>
                             </c:if>
@@ -88,7 +88,7 @@
 
                     <div class="nav_menu">
                         <ul>
-                            <c:forEach var="menu" items="${allMenu}">
+                            <c:forEach var="menu" items="${MyAllMenu}">
                                 <c:if test="${menu.parent==4}">
                                     <li><a href="${menu.url}">${menu.menuName}</a></li>
                                 </c:if>
@@ -104,7 +104,7 @@
 
                     <div class="nav_menu">
                         <ul>
-                            <c:forEach var="menu" items="${allMenu}">
+                            <c:forEach var="menu" items="${MyAllMenu}">
                                 <c:if test="${menu.parent==5}">
                                     <li><a href="${menu.url}">${menu.menuName}</a></li>
                                 </c:if>
@@ -120,7 +120,7 @@
 
                 <div class="nav_menu">
                     <ul>
-                        <c:forEach var="menu" items="${allMenu}">
+                        <c:forEach var="menu" items="${MyAllMenu}">
                             <c:if test="${menu.parent==6}">
                                 <li><a href="${menu.url}">${menu.menuName}</a></li>
                             </c:if>
@@ -140,8 +140,6 @@
 </div> <!-- #masthead -->
 
 
-<script src="/assets/js/vue.min.js" type="text/javascript"></script>
-
 <script src="/assets/js/jquery/jquery-1.5.2.min.js"></script>
 <script src="/assets/js/jquery/jquery-ui-1.8.12.custom.min.js"></script>
 <script src="/assets/js/misc/excanvas.min.js"></script>
@@ -152,9 +150,11 @@
 <script src="/assets/js/jquery/jquery.uniform.min.js"></script>
 <script src="/assets/js/jquery/jquery.placeholder.min.js"></script>
 
-<script src="/assets/js/widgets.js"></script>
-<script src="/assets/js/dashboard.js"></script>
+<script type="text/javascript" src="/assets/js/widgets.js"></script>
+<script type="text/javascript" src="/assets/js/dashboard.js"></script>
+<script type="text/javascript" src="/assets/js/vue.min.js"></script>
 
+<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>

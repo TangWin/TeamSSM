@@ -20,30 +20,46 @@ public class RealmFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        //获取session中当前用户所有的菜单
-        HttpSession session = request.getSession();
-        List<SY_Menu> allMenu = (List<SY_Menu>) session.getAttribute("allMenu");
-
-        //获取当前请求路径，判断是否拥有访问权限
+        //先判断请求路径是否存在于数据表中，若存在则进行判断
         String requestURI = request.getRequestURI();
         System.out.println("请求路径："+requestURI);
 
-        if (!requestURI.equals("/404.jsp") && allMenu!=null) {
-            boolean isFlag = false;
-            for (SY_Menu menu : allMenu) {
-                System.out.println(menu);
-                if (menu.getUrl()!=null && requestURI.contains(menu.getUrl())) {
-                    isFlag = true;
-                    break;
+        //获取session中所有的菜单选项以及当前用户所有的菜单
+        HttpSession session = request.getSession();
+
+        if (!requestURI.equals("/404.jsp") && !requestURI.equals("/login.jsp")) {
+
+            List<SY_Menu> myAllMenu = (List<SY_Menu>) session.getAttribute("MyAllMenu");
+            List<SY_Menu> allMenu = (List<SY_Menu>) session.getAttribute("allMenu");
+
+            //判断是否需要判断
+            if (allMenu != null && myAllMenu != null) {
+                boolean isFlag = false;
+                for (SY_Menu menu : allMenu) {
+                    if (menu.getUrl() != null && requestURI.contains(menu.getUrl())) {
+                        isFlag = true;
+                        break;
+                    }
+                }
+
+                //存在于要判断的菜单中
+                if (isFlag) {
+                    boolean Flag = false;
+                    for (SY_Menu menu : myAllMenu) {
+                        if (menu.getUrl() != null && requestURI.contains(menu.getUrl())) {
+                            Flag = true;
+                            break;
+                        }
+                    }
+                    //判断是否拥有访问权限
+                    if (!Flag) {
+                        response.sendRedirect("/404.jsp");
+                        return;
+                    }
                 }
             }
-
-            //没有访问权限
-            if (!isFlag) {
-                response.sendRedirect("/404.jsp");
-                return;
-            }
         }
+
         //通过验证
         filterChain.doFilter(servletRequest , servletResponse);
 

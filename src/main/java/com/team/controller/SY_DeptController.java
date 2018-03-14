@@ -29,6 +29,81 @@ public class SY_DeptController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "getDeptById")
+    public SY_Dept getDeptById(Integer requestId){
+
+        SY_Dept syDept = null ;
+
+        if (requestId!=null) {
+            syDept = sy_deptDao.getDeptById(requestId);
+        }
+
+        return syDept ;
+    }
+
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("delDeptById")
+    public boolean delDeptById(Integer id){
+        boolean flag = false ;
+        System.out.println(id);
+        Integer integer = sy_deptDao.delDeptById(id) ;
+        if (integer > 0) {
+            flag = true ;
+        }
+        return flag ;
+    }
+
+    /**
+     * 增加
+     * @param dept
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("addDept")
+    public boolean addDept(SY_Dept dept){
+        boolean flag = false ;
+
+        dept.setDisabled(false);
+
+        Integer integer = sy_deptDao.addDept(dept);
+        if (integer > 0) {
+            flag = true ;
+        }
+
+        return flag ;
+    }
+
+
+
+
+    /**
+     * 修改
+     * @param dept
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("updateDept")
+    public boolean updateDept(SY_Dept dept){
+        Boolean flag = false ;
+
+        dept.setDisabled(false);
+
+        Integer integer = sy_deptDao.updateDept(dept);
+        if (integer > 0) {
+            flag = true ;
+        }
+
+        return flag ;
+    }
+
+
 
 
 }

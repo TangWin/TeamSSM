@@ -17,12 +17,12 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
-          depends-on="lifecycleBeanPostProcessor"/>
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"-->
+          <!--depends-on="lifecycleBeanPostProcessor"/>-->
 
 
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="webSecurityManager"/>
-    </bean>
+    <!--<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">-->
+        <!--<property name="securityManager" ref="webSecurityManager"/>-->
+    <!--</bean>-->
 
 </beans>

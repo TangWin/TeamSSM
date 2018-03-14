@@ -35,10 +35,10 @@
   </filter-mapping>
 
 
-  <filter-mapping>
-    <filter-name>realmFilter</filter-name>
-    <url-pattern>*.action</url-pattern>
-  </filter-mapping>
+  <!--<filter-mapping>-->
+    <!--<filter-name>realmFilter</filter-name>-->
+    <!--<url-pattern>*.action</url-pattern>-->
+  <!--</filter-mapping>-->
 
     <filter-mapping>
         <filter-name>realmFilter</filter-name>

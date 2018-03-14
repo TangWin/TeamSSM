@@ -6,15 +6,25 @@
 
 
     <select id="getDeptAll" resultType="com.team.entity.SY_Dept">
-        select *  from SY_Dept WHERE Disabled = 0 ;
+        select *  from SY_Dept WHERE Disabled = 0 AND ID != 1;
     </select>
 
     <insert id="addDept" parameterType="SY_Dept">
-        INSERT INTO sy_dept(DeptName, Remark, Disabled) VALUES(#deptName , #remark , isabled);
+        INSERT INTO sy_dept(DeptName, Remark, Disabled) VALUES(#{deptName} , #{remark} , #{disabled});
     </insert>
 
     <select id="getDeptById" parameterType="java.lang.Integer" resultType="SY_Dept" >
         SELECT * FROM sy_dept WHERE ID = #{id} ;
     </select>
+
+
+    <delete id="delDeptById" parameterType="int">
+        DELETE  FROM  sy_dept WHERE ID = #{id}
+    </delete>
+    
+    <update id="updateDept" parameterType="SY_Dept">
+        UPDATE sy_dept SET DeptName = #{deptName}, Remark = #{remark} , Disabled = #{disabled} WHERE ID = #{ID};
+    </update>
+
 
 </mapper>

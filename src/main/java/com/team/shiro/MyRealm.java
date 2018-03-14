@@ -78,18 +78,20 @@ public class MyRealm extends AuthorizingRealm {
         //将此用户存入session
         SecurityUtils.getSubject().getSession().setAttribute("currentEmp", currentEmp);
 
+        //得到所有的菜单权限
+        List<SY_Menu> allMenu = sy_menuDao.getMenuAllByEmpId(null);
+        //存入session
+        SecurityUtils.getSubject().getSession().setAttribute("allMenu",allMenu);
 
         //判断是否为管理员
         if (currentEmp.getDeptID().getID()==1) {
-            //得到所有的菜单权限
-            List<SY_Menu> allMenu = sy_menuDao.getMenuAllByEmpId(null);
             //存入session
-            SecurityUtils.getSubject().getSession().setAttribute("allMenu",allMenu);
-        }else{
+            SecurityUtils.getSubject().getSession().setAttribute("MyAllMenu",allMenu);
+        }else {
             //得到当前员工所拥有的菜单权限
-            List<SY_Menu> allMenu = sy_menuDao.getMenuAllByEmpId(currentEmp.getId());
+            List<SY_Menu> MyAllMenu = sy_menuDao.getMenuAllByEmpId(currentEmp.getId());
             //存入session
-            SecurityUtils.getSubject().getSession().setAttribute("allMenu",allMenu);
+            SecurityUtils.getSubject().getSession().setAttribute("MyAllMenu",MyAllMenu);
         }
 
         //实例化返回信息

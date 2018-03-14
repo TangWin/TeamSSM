@@ -36,4 +36,21 @@ public interface SY_DeptDao {
     public SY_Dept getDeptById(Integer id);
 
 
+    /**
+     * 根据部门id删除部门
+     * @param id
+     * @return
+     */
+    public Integer delDeptById(Integer id);
+
+
+    /**
+     * 根据id修改部门
+     * @param dept
+     * @return
+     */
+    public Integer updateDept(SY_Dept dept);
+
+
+
 }

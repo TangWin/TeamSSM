@@ -67,7 +67,6 @@
                     method:"POST",
                     dataType:"JSON",
                     success:function (result) {
-                        console.info(result);
                         if (result) {
                             window.location.href = "workspace.jsp" ;
                         }else{

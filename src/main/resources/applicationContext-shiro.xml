@@ -6,8 +6,7 @@
 
 
 	<!-- 配置 Bean 后置处理器: 会自动的调用和 Spring 整合后各个组件的生命周期方法. -->
-	<bean id="lifecycleBeanPostProcessor"
-		  class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+	<bean id="lifecycleBeanPostProcessor"  class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
 
 	<!-- 配置SecurityManager -->
@@ -33,6 +32,10 @@
 			<value>
 				/login.jsp*=anon
 				/workspace.jsp*=authc
+				/page/sys_area.jsp*=authc
+				/page/sys_dept.jsp*=authc
+				/page/sys_area_add.jsp*=authc
+				/page/sys_dept_add.jsp*=authc
 
 				<!-- 配置角色可访问的界面
 				/index.jsp*=roles[admin]
