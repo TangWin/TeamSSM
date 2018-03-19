@@ -44,7 +44,6 @@
                 <div class="login_actions">
                     <input class="btn btn-orange btn-submit" tabindex="3" type="button" value="登录"/>
                 </div>
-                ${currentEmp.empName}
             </form>
         </div> <!-- #login_panel -->
     </div>
