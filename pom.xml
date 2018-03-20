@@ -181,6 +181,13 @@
         <!-- 引入shiro依赖  END-->
 
 
+        <!-- alibaba的json -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.40</version>
+        </dependency>
+
 
 
 

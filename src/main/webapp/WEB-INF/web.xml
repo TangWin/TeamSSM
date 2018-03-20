@@ -29,6 +29,22 @@
     <filter-class>com.team.filter.RealmFilter</filter-class>
   </filter>
 
+
+  <!-- 编码过滤 -->
+  <filter>
+    <filter-name>charset</filter-name>
+    <filter-class>com.team.filter.CharsetFilter</filter-class>
+    <init-param>
+      <param-name>chars</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>charset</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -40,10 +56,10 @@
     <!--<url-pattern>*.action</url-pattern>-->
   <!--</filter-mapping>-->
 
-    <filter-mapping>
-        <filter-name>realmFilter</filter-name>
-        <url-pattern>*.jsp</url-pattern>
-    </filter-mapping>
+    <!--<filter-mapping>-->
+        <!--<filter-name>realmFilter</filter-name>-->
+        <!--<url-pattern>*.jsp</url-pattern>-->
+    <!--</filter-mapping>-->
 
 
   <listener>
