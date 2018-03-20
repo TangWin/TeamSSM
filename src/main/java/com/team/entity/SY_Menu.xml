@@ -12,10 +12,30 @@
         </if>
         WHERE m.disabled = 0
         <if test="EmpId != null ">
-              and m.id = SY_EmpMenuPower.MenuID AND empId = #{EmpId}
+            and m.id = SY_EmpMenuPower.MenuID AND empId = #{EmpId}
         </if>
         ORDER BY m.parent , m.orderIndex
 
     </select>
+
+    <insert id="addMenu" parameterType="SY_Menu">
+        INSERT  INTO  sy_menu(menuName, parent, Url, orderIndex, flowID, disabled) VALUES (#{menuName} , #{parent}, #{url}, #{orderIndex}, #{flowID}, #{disabled} );
+    </insert>
+
+    <insert id="addEmpMenuPower">
+        INSERT INTO sy_empmenupower(empId, menuId) VALUES
+        <foreach collection="paramMap" item="param" separator=",">
+            (#{param.empId},#{param.menuId})
+        </foreach>
+    </insert>
+
+
+    <delete id="delEmpMenuPower">
+        DELETE FROM sy_empmenupower WHERE empId = #{empId}
+        <if test="menuId != null ">
+        AND  menuId = #{menuId}
+        </if>
+        AND menuId not IN (30 , 31 , 32);
+    </delete>
 
 </mapper>

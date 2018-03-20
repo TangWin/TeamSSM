@@ -63,6 +63,12 @@
 
 
 </div>
+
+
+<script src="/assets/js/jquery/jquery.uniform.min.js"></script>
+
+<script type="text/javascript" src="/assets/js/dashboard.js"></script>
+
 <script type="text/javascript">
     $(function () {
 

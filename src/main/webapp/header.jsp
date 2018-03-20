@@ -147,11 +147,9 @@
 <script src="/assets/js/jquery/jquery.visualize.js"></script>
 <script src="/assets/js/jquery/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery/jquery.tablesorter.min.js"></script>
-<script src="/assets/js/jquery/jquery.uniform.min.js"></script>
 <script src="/assets/js/jquery/jquery.placeholder.min.js"></script>
 
 <script type="text/javascript" src="/assets/js/widgets.js"></script>
-<script type="text/javascript" src="/assets/js/dashboard.js"></script>
 <script type="text/javascript" src="/assets/js/vue.min.js"></script>
 
 <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>

@@ -30,4 +30,40 @@
             and e.Pwd = #{pwd} ;
         </if>
     </select>
+
+    <select id="getEmpById" resultMap="myEmp">
+        SELECT e.ID eid , e.EmpName, e.EmpNo, e.Pwd, e.DeptID, e.Remark, e.Disabled, d.ID did , d.DeptName, d.Remark dRemark, d.Disabled dDisabled FROM sy_emp e , sy_dept d
+        WHERE e.DeptID = d.ID and e.Disabled = 0
+        <if test=" id != null ">
+            AND  e.ID = #{id}
+        </if>
+    </select>
+
+
+    <select id="getEmpPage" resultMap="myEmp">
+        SELECT e.ID eid , e.EmpName, e.EmpNo, e.Pwd, e.DeptID, e.Remark, e.Disabled, d.ID did , d.DeptName, d.Remark
+        dRemark, d.Disabled dDisabled FROM sy_emp e , sy_dept d
+        WHERE e.DeptID = d.ID and e.Disabled = 0 AND e.ID != 1
+        <if test="search !=null and search !='' ">
+            AND (e.EmpNo LIKE '%${search}%' or e.Remark LIKE '%${search}%' or e.EmpName LIKE '%${search}%' or e.ID = #{search} or d.DeptName LIKE '%${search}%')
+        </if>
+        ORDER BY  e.EmpNo
+        <if test="currentPage != null and pageCount != null ">
+            LIMIT #{currentPage} , #{pageCount} ;
+        </if>
+    </select>
+
+    <update id="updateEmpById" parameterType="SY_Emp">
+        UPDATE sy_emp SET EmpName = #{empName}, Remark = #{remark}, DeptID = #{deptID.ID} WHERE ID = #{id}
+    </update>
+    
+    <insert id="addEmp" parameterType="SY_Emp">
+        INSERT INTO sy_emp(EmpName, EmpNo, Pwd, DeptID, Remark, Disabled)  VALUES (#{empName} , #{empNo} , #{pwd} , #{deptID.ID} ,#{remark}, #{disabled});
+    </insert>
+
+    <delete id="delEmpById" parameterType="java.lang.Integer">
+        DELETE FROM sy_emp WHERE ID = #{id}
+    </delete>
+
+
 </mapper>

@@ -34,8 +34,11 @@
 				/workspace.jsp*=authc
 				/page/sys_area.jsp*=authc
 				/page/sys_dept.jsp*=authc
+				/page/sys_emp.jsp*=authc
 				/page/sys_area_add.jsp*=authc
 				/page/sys_dept_add.jsp*=authc
+				/page/sys_emp_add.jsp*=authc
+				/page/sys_menupower_set.jsp*=authc
 
 				<!-- 配置角色可访问的界面
 				/index.jsp*=roles[admin]

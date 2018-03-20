@@ -4,6 +4,7 @@ import com.team.entity.SY_Menu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 菜单接口dao
@@ -20,5 +21,14 @@ public interface SY_MenuDao {
     public List<SY_Menu> getMenuAllByEmpId(@Param("EmpId") Integer EmpId);
 
 
+    /**
+     * 添加单个员工菜单权限
+     * @param paramMap
+     * @return
+     */
+    public Integer addEmpMenuPower(@Param("paramMap") List<Map<String , String>> paramMap) ;
+
+
+    public Integer delEmpMenuPower(@Param("empId") Integer empId , @Param("menuId") Integer menuId);
 
 }

@@ -19,6 +19,11 @@ public class SY_DeptController {
     @Autowired
     private SY_DeptDao sy_deptDao;
 
+
+    /**
+     * 获取所有部门
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "getDeptAll")
     public List<SY_Dept> getAll(){
@@ -29,6 +34,11 @@ public class SY_DeptController {
     }
 
 
+    /**
+     * 根据id获取部门
+     * @param requestId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "getDeptById")
     public SY_Dept getDeptById(Integer requestId){
