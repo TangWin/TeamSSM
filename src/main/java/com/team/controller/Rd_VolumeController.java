@@ -3,7 +3,7 @@ package com.team.controller;
 import com.team.dao.RD_VolumeDao;
 import com.team.dao.SY_AreaDao;
 import com.team.entity.Rd_Volume;
-import com.team.entity.SY_Area;
+import com.team.entity.Sy_Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -155,13 +155,13 @@ public class Rd_VolumeController {
                 "</table>";
 
               //查询出所有的辖区、表册
-        List<SY_Area> areaList = syAreaDao.getAllArea();
+        List<Sy_Area> areaList = syAreaDao.getAreaAllPage();
         List<Rd_Volume> volumes=rdVolumeDao.getallvolume();
         //遍历辖区的集合
-        for (SY_Area sy_area : areaList) {
+        for (Sy_Area sy_area : areaList) {
             strbegin="<table class='data display>" +
                     " <thead><tr>"+
-                    "<th>"+sy_area.getAreaname()+"</th>" +
+                    "<th>"+sy_area.getAreaName()+"</th>" +
                     "</tr></thead><tbody>" ;
            //遍历表册
             for (Rd_Volume volume : volumes) {
