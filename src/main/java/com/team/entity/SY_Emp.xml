@@ -20,6 +20,12 @@
     </resultMap>
 
 
+    <select id="selectallemp" parameterType="int" resultType="com.team.entity.SY_Emp">
+        select *from SY_EMP WHERE  deptId=#{deptId};
+    </select>
+
+
+
     <select id="login" parameterType="java.lang.String" resultMap="myEmp">
         SELECT e.ID eid , e.EmpName, e.EmpNo, e.Pwd, e.DeptID, e.Remark, e.Disabled, d.ID did , d.DeptName, d.Remark dRemark, d.Disabled dDisabled FROM sy_emp e , sy_dept d
         WHERE e.DeptID = d.ID and e.Disabled = 0

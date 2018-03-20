@@ -1,7 +1,9 @@
 package com.team.controller;
 
 
+import com.team.dao.RD_VolumeDao;
 import com.team.dao.SY_AreaDao;
+import com.team.entity.Rd_Volume;
 import com.team.entity.Sy_Area;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -114,6 +118,32 @@ public class SY_AreaController {
         }
 
         return flag;
+    }
+
+
+    @Autowired
+    private RD_VolumeDao rdVolumeDao;
+    @ResponseBody
+    @RequestMapping("/getallareas")
+    public String getallareas(HttpServletResponse response, HttpServletRequest request)  {
+        String str=" 选择表册:<select id='selectidss' class='medium' >";
+        String endoptgroupstr="</select> ";
+        String centerstr="</optgroup>";
+        List<Sy_Area> areaList = sy_areaDao.getAreaAllPage();
+        List<Rd_Volume> volumes=rdVolumeDao.getallvolume();
+
+        for (Sy_Area sy_area : areaList) {
+            str=str+ "<optgroup label='"+sy_area.getAreaName()+"'>";
+
+            for (Rd_Volume volume : volumes) {
+                if(volume.getAreaID()==sy_area.getId()){
+                    str=str+"<option  value='"+volume.getId()+"'>"+volume.getVolumeName()+"</option>";
+                }
+            }
+            str=str+centerstr;
+        }
+        str=str+endoptgroupstr;
+        return str ;
     }
 
 

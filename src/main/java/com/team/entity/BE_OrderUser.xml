@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.dao.BE_OrderUserDao">
+
+    <insert id="addOrderUser" parameterType="com.team.entity.BE_OrderUser">
+        insert into be_orderuser(OrderNo,UserName,Phone,SMSPhone,Address,MeterTypeID)
+        values(#{orderNo},#{userName},#{phone},#{sMSPhone},#{address},#{meterTypeID})
+    </insert>
+
+    <update id="updateMoney">
+        update be_orderuser set ProjectMoney = #{ProjectMoney},RealMoney = #{RealMoney} where OrderNo = #{OrderNo}
+    </update>
+
+    <update id="updateTibi">
+        update be_orderuser set Formula = #{Formula} where OrderNo = #{OrderNo}
+    </update>
+    <update id="updateDangan">
+        update be_orderuser set DocNum = #{DocNum} where OrderNo = #{OrderNo}
+    </update>
+    <select id="getOne" resultType="com.team.entity.BE_OrderUser" parameterType="String">
+        select * from be_orderuser where OrderNo = #{OrderNo}
+    </select>
+
+    <update id="updateInfo">
+        update be_orderuser set MeterTypeID = #{MeterTypeID},MeterName = #{MeterName},MaxValue = #{MaxValue},StartValue = #{StartValue},MeterFactory = #{MeterFactory} where OrderNo = #{OrderNo}
+    </update>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.dao.US_MeterDao">
+
+    <insert id="insertOne" parameterType="com.team.entity.US_Meter">
+        insert into us_meter values(#{meterNo},#{userNo},#{meterName},#{meterTypeID},#{maxValue},#{startValue},#{setupDate},#{factory},#{disabled});
+    </insert>
+    <select id="getOne" parameterType="String" resultType="int">
+        select count(*) from us_meter where UserNo = #{UserNo}
+    </select>
+
+</mapper>

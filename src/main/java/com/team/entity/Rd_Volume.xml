@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="com.team.dao.RD_VolumeDao">
+
+         <insert id="createrdvolume" parameterType="com.team.entity.Rd_Volume">
+             INSERT rd_volume(VolumeName,AreaID,Remark)VALUES (#{volumeName},#{areaID},#{remark})
+         </insert>
+
+        <delete id="deleteDvolume" parameterType="java.lang.Integer">
+            DELETE FROM rd_volume WHERE id = #{id,jdbcType=INTEGER}
+        </delete>
+
+        <update id="updateDvolume" parameterType="com.team.entity.Rd_Volume">
+            update rd_volume
+            <set >
+                <if test="volumeName != null" >
+                    VolumeName = #{volumeName,jdbcType=VARCHAR},
+                </if>
+                <if test="areaID != null" >
+                    AreaID = #{areaID,jdbcType=INTEGER},
+                </if>
+                <if test="orderIndex != null" >
+                    OrderIndex = #{orderIndex,jdbcType=INTEGER},
+                </if>
+                <if test="remark != null" >
+                    Remark = #{remark,jdbcType=VARCHAR},
+                </if>
+                <if test="disabled != null" >
+                    Disabled = #{disabled,jdbcType=INTEGER},
+                </if>
+            </set>
+            where ID = #{id,jdbcType=INTEGER}
+        </update>
+
+        <select id="getDvolumeById" resultType="com.team.entity.Rd_Volume">
+            SELECT
+                *
+             FROM
+                rd_volume
+             WHERE
+                id = #{id,jdbcType=INTEGER}
+        </select>
+
+        <select id="getDvolumeAll" resultType="com.team.entity.Rd_Volume">
+           SELECT
+                t1.*,t2
+             FROM
+                rd_volume t1
+             JOIN us_user t2 ON t2.VolumeID = t1.id
+             <where>
+                 <if test="UserName != null and UserName!=''">
+                    AND t2.UserName = #{UserName,jdbcType=VARCHAR}
+                 </if>
+             </where>
+            LIMIT #{page},#{size}
+        </select>
+
+    <select id="getallvolume" resultType="com.team.entity.Rd_Volume">
+       select *from rd_volume
+    </select>
+
+
+
+
+
+
+
+</mapper>

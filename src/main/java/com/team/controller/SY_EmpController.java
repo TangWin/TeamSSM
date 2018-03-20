@@ -268,4 +268,13 @@ public class SY_EmpController {
     }
 
 
+
+    @RequestMapping("/emp/getmeterreading")
+    @ResponseBody
+    public List<SY_Emp> getmeterreading(int deptId){
+
+        return sy_empDao.selectallemp(deptId);
+    }
+
+
 }

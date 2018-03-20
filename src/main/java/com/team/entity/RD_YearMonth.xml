@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.RD_YearMonthDao">
+
+
+    <resultMap id="allrdyearmonth" type="com.team.entity.RD_YearMonth">
+        <id column="id" property="id"></id>
+        <result property="readerYear" column="ReaderYear"></result>
+        <result property="readerMonth" column="ReaderMonth"></result>
+        <result property="isCurrent" column="IsCurrent"></result>
+        <result property="initDate" column="InitDate"></result>
+        <result property="endDate" column="EndDate"></result>
+        <association property="sy_emp" column="InitEmpID" javaType="com.team.entity.SY_Emp">
+            <id property="id" column="id" />
+            <result property="empName" column="EmpName" />
+            <result property="empNo" column="EmpNo" />
+            <result property="pwd" column="Pwd"></result>
+            <result property="deptId" column="DeptId"></result>
+            <result property="remark" column="Remark"></result>
+            <result property="disabled" column="Disabled"></result>
+        </association>
+    </resultMap>
+
+    <select id="getAllsyemp"  resultMap="allrdyearmonth">
+       select r.*,s.* from RD_YearMonth r, SY_EMP s WHERE r.initempid=s.id;
+    </select>
+
+    <select id="getSyempLists" resultType="java.util.Map">
+        SELECT
+            r.id,
+            r.ReadYear,
+            r.ReadMonth,
+            r.IsCurrent,
+            DATE_FORMAT(r.InitDate,'%Y-%m-%d') as InitDate,
+            DATE_FORMAT(r.EndDate,'%Y-%m-%d')as EndDate,
+            s.EmpName
+        FROM
+            RD_YearMonth r
+        JOIN SY_EMP s ON r.InitEmpID = s.ID
+    </select>
+
+
+
+
+
+
+
+
+
+
+</mapper>

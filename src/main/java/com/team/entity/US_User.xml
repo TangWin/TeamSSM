@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.dao.US_UserDao">
+    <select id="getOne" resultType="com.team.entity.US_User" parameterType="String">
+        select * from us_user where UserNo = #{UserNo}
+    </select>
+    <update id="updateMoney">
+        update us_user set UserMoney = #{UserMoney} where UserNo = #{UserNo}
+    </update>
+    <update id="updateTibi">
+        update us_user set Formula = #{Formula} where UserNo = #{UserNo}
+    </update>
+    <update id="updateDangan">
+    update us_user set DocNum = #{DocNum} where UserNo = #{UserNo}
+    </update>
+    <update id="updatexm">
+        update us_user set Disabled = #{Disabled} where UserNo = #{UserNo}
+    </update>
+
+</mapper>

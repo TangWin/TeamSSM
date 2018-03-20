@@ -60,4 +60,12 @@ public interface SY_EmpDao  {
     public Integer addEmp(SY_Emp emp);
 
 
+    /**
+     * @author yqp
+     * @param deptId
+     * @return
+     */
+    List<SY_Emp> selectallemp(int deptId);
+
+
 }

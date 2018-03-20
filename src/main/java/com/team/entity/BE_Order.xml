@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.BE_OrderDao">
+
+    <select id="getCBSHOrder" resultType="com.team.entity.BE_Order">
+        select * from be_order where StepID = #{StepID} limit #{start},10
+    </select>
+    <select id="getCBSHOrderNum" resultType="int" parameterType="int">
+        select count(*) from be_order where StepID = #{StepID}
+    </select>
+    <select id="getOrderOne" resultType="com.team.entity.BE_Order" parameterType="String">
+        select * from be_order where OrderNo = #{OrderNo}
+    </select>
+    <update id="UpdateOne">
+        update be_order set StepID = #{StepID} where OrderNo = #{OrderNo}
+    </update>
+    <update id="UpdateOkOne">
+        update be_order set StepID = #{StepID},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate},AuditEmpID = #{AuditEmpID},AuditMessage = #{AuditMessage} where OrderNo = #{OrderNo}
+    </update>
+    <update id="UpdatejsgfOne">
+        update be_order set StepID = #{StepID},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate},ProjectMoney = #{ProjectMoney},RealMoney = #{RealMoney},PayDate = #{PayDate} where OrderNo = #{OrderNo}
+    </update>
+    <update id="UpdategsxyOne">
+        update be_order set StepID = #{StepID},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate} where OrderNo = #{OrderNo}
+    </update>
+    <update id="UpdatedacdOne">
+        update be_order set StepID = #{StepID},CompleteDate = #{CompleteDate},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate} where OrderNo = #{OrderNo}
+    </update>
+    <update id="UpdatesgjgOne">
+        update be_order set StepID = #{StepID},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate},ProjectDate1 = #{ProjectDate1},ProjectDate2 = #{ProjectDate2},AreaID = #{AreaID} where OrderNo = #{OrderNo}
+    </update>
+    <update id="overOrder">
+        update be_order set StepID = #{StepID},LastEditEmp = #{LastEditEmp},LastEditDate = #{LastEditDate},AbortCause = #{AbortCause} where OrderNo = #{OrderNo}
+    </update>
+</mapper>

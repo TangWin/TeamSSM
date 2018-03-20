@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.RD_ReadDao">
+
+    <select id="getallread" resultType="java.util.Map">
+  SELECT
+   r.id,u.UserNo,m.MeterNo,m.MeterName,m.`MaxValue`,u.UserName,r.PreValue,r.CurValue,r.Amount,r.Enter from rd_read r
+join us_user u on r.UserNo=u.UserNo
+join us_meter m on m.MeterNo=r.MeterNo
+where r.VolumeID=#{volumeid}
+   </select>
+
+     <update id="updatemount">
+         UPDATE rd_read SET enter=1, CurValue=#{curvalue},Amount=#{amount} where id=#{id}
+     </update>
+
+<update id="updatenter" parameterType="int" >
+     update rd_read SET enter=0 where id=#{id}
+
+</update>
+
+    <select id="auditdetail" resultType="java.util.Map">
+        SELECT
+   r.id,r.ReadMonth,r.ReadYear, u.UserNo,m.MeterNo,m.MeterName,m.`MaxValue`,u.UserName,r.PreValue,r.CurValue,r.Amount,r.Enter from rd_read r
+join us_user u on r.UserNo=u.UserNo
+join us_meter m on m.MeterNo=r.MeterNo
+where r.VolumeID=#{volumeid} and r.ReadMonth=3 and r.ReadYear=2017 AND r.Audit=0 AND r.Enter=1
+   </select>
+
+    <update id="updatereadmore">
+        UPDATE rd_read SET Audit=1,AuditEmpID=#{auditempid}, AuditDate=#{auditdate} where id=#{id}
+    </update>
+
+
+
+    </mapper>

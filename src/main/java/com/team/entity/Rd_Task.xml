@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.RD_TaskDao">
+
+   <select id="getalltask" resultType="java.util.Map" >
+       SELECT t.id,a.AreaName,v.VolumeName,t.VolumeId,e.EmpName FROM rd_task t
+             JOIN rd_volume v ON t.VolumeId= v.ID
+             JOIN sy_area a on a.ID=v.AreaID
+             JOIN sy_emp e on e.ID=t.EmpId
+   </select>
+
+    <select id="gettaskobject" parameterType="int" resultType="com.team.entity.Tasksimulate">
+        SELECT t.id, t.ReadMonth,t.ReadYear,a.AreaName,v.VolumeName,e.EmpName FROM rd_task t
+             JOIN rd_volume v ON t.VolumeId= v.ID
+             JOIN sy_area a on a.ID=v.AreaID
+             JOIN sy_emp e on e.ID=t.EmpId
+             WHERE t.id=#{id}
+    </select>
+
+
+    <update id="updatetask"  >
+         update  rd_task SET EmpId=#{empid} where id=#{id}
+    </update>
+
+    </mapper>
